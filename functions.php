@@ -9,7 +9,12 @@
 
 if ( ! defined( '_S_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
-	define( '_S_VERSION', '1.0.1' );
+	define( '_S_VERSION', '1.0.9' );
+}
+
+if ( ! defined( 'PRISM_VERSION' ) ) {
+	// PrismJS version.
+	define( 'PRISM_VERSION', '1.21.0' );
 }
 
 if ( ! function_exists( 'nh_setup' ) ) :
@@ -140,12 +145,15 @@ add_action( 'widgets_init', 'nh_widgets_init' );
  * Enqueue scripts and styles.
  */
 function nh_scripts() {
+	wp_enqueue_style( 'prism', 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.21.0/themes/prism.min.css', false, '1.21.0', 'all');
 	wp_enqueue_style( 'bootstrap-grid', get_template_directory_uri() . '/css/bootstrap-grid.min.css', false, '4.1', 'all');
 	wp_enqueue_style( 'boilerplate', get_template_directory_uri() . '/css/boilerplate.css', array( 'bootstrap-grid' ), '1.0', 'all');
-	wp_enqueue_style( 'nh-style', get_stylesheet_uri(), array( 'boilerplate' ), _S_VERSION );
+	wp_enqueue_style( 'nh-style', get_stylesheet_uri(), array( 'boilerplate', 'prism' ), _S_VERSION );
 	wp_style_add_data( 'nh-style', 'rtl', 'replace' );
 
 	wp_enqueue_script( 'nh-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'prism-core', 'https://cdnjs.cloudflare.com/ajax/libs/prism/'.PRISM_VERSION.'/prism.min.js', array(), PRISM_VERSION, true );
+	wp_enqueue_script( 'prism-autoloader', 'https://cdnjs.cloudflare.com/ajax/libs/prism/'.PRISM_VERSION.'/plugins/autoloader/prism-autoloader.min.js', array('prism-core'), PRISM_VERSION, true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -180,3 +188,13 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+function new_excerpt_more($more) {
+    global $post;
+	return ' <a class="moretag" href="'. get_permalink($post->ID) . '"> [...]</a>';
+}
+add_filter('excerpt_more', 'new_excerpt_more');
+
+function new_excerpt_length($length){
+    return 40;
+}
+add_filter('excerpt_length', 'new_excerpt_length');

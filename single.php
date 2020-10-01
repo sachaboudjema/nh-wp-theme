@@ -11,6 +11,7 @@ get_header();
 ?>
 <div class="row">
 	<main id="primary" class="site-main col">
+        <hr/>
 		<?php
 		while ( have_posts() ) :
 			the_post();
@@ -19,8 +20,8 @@ get_header();
 
 			the_post_navigation(
 				array(
-					'prev_text' => '<span class="nav-subtitle">' . esc_html__( 'Previous:', 'nh' ) . '</span> <span class="nav-title">%title</span>',
-					'next_text' => '<span class="nav-subtitle">' . esc_html__( 'Next:', 'nh' ) . '</span> <span class="nav-title">%title</span>',
+					'prev_text' => '<span class="nav-subtitle">' . esc_html__( 'Previous', 'nh' ) . '</span><br/><span class="nav-title">%title</span>',
+					'next_text' => '<span class="nav-subtitle">' . esc_html__( 'Next', 'nh' ) . '</span><br/><span class="nav-title">%title</span>',
 				)
 			);
 

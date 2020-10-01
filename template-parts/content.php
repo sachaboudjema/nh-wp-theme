@@ -36,28 +36,31 @@
                     ?>
                 </div><!-- .entry-meta -->
             <?php endif; ?>
-            <hr/>
         <?php endif; ?>
 	</header><!-- .entry-header -->
 
 	<?php nh_post_thumbnail(); ?>
 
 	<div class="entry-content">
-		<?php
-		the_content(
-			sprintf(
-				wp_kses(
-					/* translators: %s: Name of current post. Only visible to screen readers */
-					__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'nh' ),
-					array(
-						'span' => array(
-							'class' => array(),
-						),
-					)
-				),
-				wp_kses_post( get_the_title() )
-			)
-		);
+        <?php
+        if ( is_singular() ) :
+            the_content(
+                sprintf(
+                    wp_kses(
+                        /* translators: %s: Name of current post. Only visible to screen readers */
+                        __( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'nh' ),
+                        array(
+                            'span' => array(
+                                'class' => array(),
+                            ),
+                        )
+                    ),
+                    wp_kses_post( get_the_title() )
+                )
+            );
+        else:
+            the_excerpt();
+        endif;
 
 		wp_link_pages(
 			array(
@@ -72,4 +75,4 @@
 		<?php //nh_entry_footer(); ?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-<?php the_ID(); ?> -->
-<hr/>
+<hr style="clear:both;"/>

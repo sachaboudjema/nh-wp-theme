@@ -22,9 +22,35 @@ Normalizing styles have been helped along thanks to the fine work of
 Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 */
 
+a:link, a:visited {
+    color: maroon;
+}
+
+a:hover, a:active {
+    color: rosybrown;
+    text-decoration: underline;
+}
+
+code {
+    font-family: "Lucida Console", Monaco, monospace;
+    font-size: .9em;
+    background-color: #eee;
+}
+
+code[class*=language-],pre[class*=language-] {
+    font-size: .9em;
+}
 
 .site-main {
     overflow: auto;
+}
+
+.site-footer {
+    margin-top: 1em;
+}
+
+.site-info {
+    text-align: right;
 }
 
 .site-title {
@@ -33,6 +59,11 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 
 .site-title a {
     color: black;
+    text-decoration: none;
+}
+
+.small-title a:hover {
+    text-decoration: underline;
 }
 
 .site-description {
@@ -43,7 +74,7 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
     margin: 0;
 }
 
-.entry-title a {
+.entry-title a:link, .entry-title a:visited {
     color: black;
 }
 
@@ -54,4 +85,47 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 
 .entry-header h1 {
     margin: 0;
+}
+
+.posts-navigation, .pagination, .nav-links {
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+}
+
+.posts-navigation, .pagination, .nav-subtitle {
+    font-weight: bold;
+}
+
+.post-navigation a, a.prev, a.next {
+    color: black;
+}
+
+
+.page-numbers {
+    color: #aaa;
+}
+
+.current {
+    color: black;
+    font-weight: bold;
+}
+
+.pagination {
+    text-align: center;
+}
+
+.prev {
+    float: left;
+}
+
+.next {
+    float: right;
+}
+
+.nav-subtitle {
+    font-weight: bold;
+}
+
+.sticky {
+    background-color: #eee;
+    padding: 1em;
 }
