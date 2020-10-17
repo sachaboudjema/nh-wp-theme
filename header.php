@@ -22,7 +22,7 @@
 
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
-<div id="page" class="site container" style="max-width: 720px">
+<div id="page" class="site container">
 	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'nh' ); ?></a>
 
     <header id="masthead" class="site-header row">
@@ -30,8 +30,9 @@
             <div class="site-branding">
                 <?php if ( is_front_page() && is_home() ) : ?>
                     <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-                <?php else : ?>
-                    <h3 class="site-title small-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h3>
+                <?php else : ?><h3 class="site-title small-title">
+                    <span class="back-home"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">Back to Home</a></span>
+                    <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h3>
                     <?php
                 endif;
                 $nh_description = get_bloginfo( 'description', 'display' );

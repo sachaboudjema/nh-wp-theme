@@ -405,7 +405,7 @@ textarea {
 	color: #404040;
 	font-size: 1rem;
 	line-height: 1.5;
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    font-family: Georgia, serif;
 }
 
 h1,
@@ -414,7 +414,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    font-family: Georgia, serif;
 	clear: both;
 }
 

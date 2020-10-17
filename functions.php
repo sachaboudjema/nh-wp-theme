@@ -9,7 +9,7 @@
 
 if ( ! defined( '_S_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
-	define( '_S_VERSION', '1.0.9' );
+	define( '_S_VERSION', '1.0.19' );
 }
 
 if ( ! defined( 'PRISM_VERSION' ) ) {
@@ -147,7 +147,7 @@ add_action( 'widgets_init', 'nh_widgets_init' );
 function nh_scripts() {
 	wp_enqueue_style( 'prism', 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.21.0/themes/prism.min.css', false, '1.21.0', 'all');
 	wp_enqueue_style( 'bootstrap-grid', get_template_directory_uri() . '/css/bootstrap-grid.min.css', false, '4.1', 'all');
-	wp_enqueue_style( 'boilerplate', get_template_directory_uri() . '/css/boilerplate.css', array( 'bootstrap-grid' ), '1.0', 'all');
+	wp_enqueue_style( 'boilerplate', get_template_directory_uri() . '/css/boilerplate.css', array( 'bootstrap-grid' ), _S_VERSION, 'all');
 	wp_enqueue_style( 'nh-style', get_stylesheet_uri(), array( 'boilerplate', 'prism' ), _S_VERSION );
 	wp_style_add_data( 'nh-style', 'rtl', 'replace' );
 
